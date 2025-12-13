@@ -53,11 +53,44 @@ The **linux-mcp-server** provides read-only diagnostic tools:
 - `list_block_devices` - Block devices and partitions
 - `list_directories` - List directories with sorting options
 
+---
+
+The **mcp-server-docker** provides container management tools:
+
+### Container Management
+- `list_containers` - List all containers (running and stopped)
+- `create_container` - Create a new container from an image
+- `run_container` - Create and start a container
+- `start_container` - Start a stopped container
+- `stop_container` - Stop a running container
+- `remove_container` - Remove a container
+- `get_container_logs` - Fetch logs from a container
+- `recreate_container` - Recreate a container with new settings
+
+### Image Management
+- `list_images` - List available Docker images
+- `pull_image` - Pull an image from a registry
+- `push_image` - Push an image to a registry
+- `build_image` - Build an image from a Dockerfile
+- `remove_image` - Remove an image
+
+### Network Management
+- `list_networks` - List Docker networks
+- `create_network` - Create a new network
+- `remove_network` - Remove a network
+
+### Volume Management
+- `list_volumes` - List Docker volumes
+- `create_volume` - Create a persistent volume
+- `remove_volume` - Remove a volume
+
+> **Security Note:** Avoid passing sensitive data (API keys, passwords) when creating containers through natural language. Review container configurations before applying.
+
 ## Guidelines
 
 1. **Read before modifying** - Always check current state before making changes
 2. **Confirm destructive actions** - Ask before stopping services, deleting files, or modifying system configs
-3. **Prefer the MCP tools** - Use linux-mcp-server tools for diagnostics instead of raw shell commands when available
+3. **Prefer the MCP tools** - Use MCP server tools for diagnostics and Docker management instead of raw shell commands when available
 4. **Config file safety** - When editing configs in `config/`, consider creating backups first
 
 ## Creating Scripts
@@ -87,3 +120,6 @@ When performing admin tasks that could be reused, create a Python script in `scr
 - Inspect network connections and listening ports
 - Edit and manage user configuration files
 - Compare and update dotfile configurations
+- Manage Docker containers and images
+- Debug containerized applications via logs
+- Set up development environments with Docker
